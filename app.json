@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "WardRobe",
+    "slug": "wardrobe",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "app.wardrobe.mobile",
+      "edgeToEdgeEnabled": true
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "WardRobe usa le tue foto solo per aggiungere capi al tuo armadio.",
+          "cameraPermission": "WardRobe usa la fotocamera per fotografare i tuoi capi.",
+          "microphonePermission": false
+        }
+      ]
+    ]
+  }
+}

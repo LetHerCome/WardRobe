@@ -1,0 +1,12 @@
+﻿name: Send WardRobe updates
+
+on:
+  push:
+    branches: ['main']
+
+jobs:
+  send_updates:
+    name: Send WardRobe update
+    type: update
+    params:
+      channel: preview

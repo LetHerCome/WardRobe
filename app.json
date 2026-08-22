@@ -21,6 +21,17 @@
           "microphonePermission": false
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "f38236c2-5954-4736-885e-472021a65d3d"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/f38236c2-5954-4736-885e-472021a65d3d"
+    }
   }
 }

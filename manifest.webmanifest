@@ -1,14 +1,12 @@
 {
   "name": "WardRobe",
   "short_name": "WardRobe",
-  "description": "Il tuo guardaroba digitale personale.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#f6f2ec",
   "theme_color": "#f6f2ec",
-  "orientation": "portrait",
   "icons": [
-    {"src":"./assets/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+    {"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
   ]
 }

@@ -1,11 +1,11 @@
-# WardRobe — Home baseline
+# WardRobe — Home Fix v2
 
-Questa build riparte dalla Home. Wardrobe, Dressing e Looks sono volutamente placeholder finché la Home non viene approvata.
+Upload nella root del repository GitHub sostituendo i file esistenti:
 
-Carica nella root GitHub:
 - index.html
+- avatar.png
+- icon.svg
 - manifest.webmanifest
 - sw.js
-- assets/
 
-Vercel eseguirà il deploy dal repository collegato.
+La Home usa `avatar.png` direttamente dalla root per evitare problemi con cartelle assets durante l'upload mobile.

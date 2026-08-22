@@ -1,17 +1,10 @@
-# WardRobe
+# WardRobe PWA v3
 
-WardRobe is a mobile-first PWA for managing a digital closet, building outfits, and saving looks.
+Upload all files/folders in this package to the repository root.
 
-## Current stack
-- Static HTML/CSS/JavaScript
-- Vercel hosting
-- GitHub `main` as source of truth
+- `index.html`
+- `manifest.webmanifest`
+- `sw.js`
+- `assets/`
 
-## Current sections
-- Home
-- Wardrobe
-- Dressing Room
-- Looks
-
-## Repository policy
-This repository no longer uses Expo, EAS, React Native, Babel, or Node build tooling for the current PWA prototype.
+The PWA uses `display: standalone`. After the Vercel deploy, install/add WardRobe to the phone Home Screen and launch it from there to hide browser chrome.

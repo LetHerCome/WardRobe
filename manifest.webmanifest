@@ -1,0 +1,19 @@
+{
+  "name": "WardRobe",
+  "short_name": "WardRobe",
+  "description": "Il tuo guardaroba digitale e Dressing Room personale.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f2ec",
+  "theme_color": "#f6f2ec",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

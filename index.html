@@ -14,7 +14,7 @@
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
-<title>WardRobe</title>
+<title>WardRobe — 1.0</title>
 <style>
 :root {
   --bg: #f7f3ee;
@@ -1530,6 +1530,30 @@ body{background:var(--bg)}
 .pwa-ios-help.show{display:block}.pwa-ios-help strong{font:500 18px/1.1 Georgia,"Times New Roman",serif}.pwa-ios-help p{margin:8px 0 0;color:var(--muted);font-size:11px;line-height:1.5}.pwa-ios-help button{margin-top:12px;width:100%;height:40px;border:0;border-radius:999px;background:#171513;color:#fff;font-size:10px;font-weight:750}
 @media (display-mode:standalone){.pwa-install-banner,.pwa-ios-help{display:none!important}}
 @media(max-width:365px){.pwa-install-banner{grid-template-columns:36px 1fr auto;gap:8px}.pwa-install-mark{width:36px;height:36px}.pwa-install-primary{padding:0 9px}}
+
+
+/* ========================= Add Item 1.0 ========================= */
+.add-item-editor-sheet{
+  max-height:calc(100svh - 14px);overflow-y:auto;overscroll-behavior:contain;
+  padding-bottom:calc(18px + env(safe-area-inset-bottom));
+}
+.add-item-editor-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px}
+.add-item-editor-head .sheet-title{margin:0}.add-item-editor-head p{margin:4px 0 0;color:var(--muted);font-size:9.5px;line-height:1.35}
+.add-item-crop-wrap{position:relative;width:min(100%,288px);aspect-ratio:4/5;margin:2px auto 12px;border-radius:22px;overflow:hidden;background:#f1ebe5;border:1px solid rgba(224,215,207,.95);box-shadow:0 10px 25px rgba(52,40,31,.06);touch-action:none}
+#addItemCropCanvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+#addItemCropCanvas:active{cursor:grabbing}
+.add-item-crop-frame{position:absolute;inset:11px;border:1px solid rgba(255,255,255,.78);border-radius:16px;pointer-events:none;box-shadow:0 0 0 999px rgba(25,20,17,.045)}
+.add-item-crop-hint{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);padding:5px 8px;border-radius:999px;background:rgba(255,253,250,.86);backdrop-filter:blur(12px);font-size:7.5px;color:#6d655f;white-space:nowrap;pointer-events:none}
+.add-item-fields{display:grid;grid-template-columns:1.2fr .8fr;gap:9px}
+.add-item-field{display:block}.add-item-field span,.add-item-zoom-row span{display:block;margin:0 0 5px 2px;color:var(--muted);font-size:8px}
+.add-item-field input,.add-item-field select{width:100%;height:43px;border:1px solid var(--line);border-radius:14px;background:#fff;padding:0 11px;outline:none;font-size:11px}
+.add-item-field select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8a817a 50%),linear-gradient(135deg,#8a817a 50%,transparent 50%);background-position:calc(100% - 15px) 18px,calc(100% - 11px) 18px;background-size:4px 4px,4px 4px;background-repeat:no-repeat;padding-right:28px}
+.add-item-zoom-row{margin-top:10px}.add-item-zoom-row input{width:100%;accent-color:#171513}
+.add-item-editor-actions{display:grid;grid-template-columns:.72fr .72fr 1.55fr;gap:7px;margin-top:12px}
+.add-item-editor-actions button{height:44px;border-radius:14px;border:1px solid var(--line);background:#fff;font-size:9.5px;font-weight:740}
+.add-item-editor-actions .primary{background:#171513;color:#fff;border-color:#171513}.add-item-editor-actions .primary:disabled{opacity:.55}
+@media(max-width:365px){.add-item-fields{grid-template-columns:1fr}.add-item-crop-wrap{width:min(100%,250px)}.add-item-editor-actions{grid-template-columns:1fr 1fr}.add-item-editor-actions .primary{grid-column:1/-1}}
+
 </style>
 </head>
 <body>
@@ -1851,6 +1875,30 @@ body{background:var(--bg)}
   </button>
   <input id="cameraInput" type="file" accept="image/*" capture="environment" hidden>
   <input id="galleryInput" type="file" accept="image/*" hidden>
+</section>
+
+<section class="sheet add-item-editor-sheet" id="addItemEditorSheet" aria-hidden="true">
+  <div class="handle"></div>
+  <div class="add-item-editor-head">
+    <div><h2 class="sheet-title">Prepara il capo</h2><p>Centra la foto, scegli la categoria e salvala nel tuo Wardrobe.</p></div>
+  </div>
+  <div class="add-item-crop-wrap">
+    <canvas id="addItemCropCanvas" width="720" height="900" aria-label="Ritaglio foto capo"></canvas>
+    <div class="add-item-crop-frame"></div>
+    <div class="add-item-crop-hint">Trascina per centrare · usa lo zoom</div>
+  </div>
+  <div class="add-item-fields">
+    <label class="add-item-field"><span>Nome</span><input id="addItemName" maxlength="50" placeholder="Es. Top nero"></label>
+    <label class="add-item-field"><span>Categoria</span><select id="addItemCategory">
+      <option value="tops">Tops</option><option value="bottoms">Bottoms</option><option value="dresses">Dresses</option><option value="jackets">Jackets</option><option value="shoes">Shoes</option><option value="bags">Bags</option><option value="accessories">Accessories</option>
+    </select></label>
+  </div>
+  <label class="add-item-zoom-row"><span>Zoom</span><input id="addItemZoom" type="range" min="1" max="2.5" step="0.01" value="1"></label>
+  <div class="add-item-editor-actions">
+    <button id="addItemCancel" type="button">Annulla</button>
+    <button id="addItemRetake" type="button">Cambia foto</button>
+    <button class="primary" id="addItemSave" type="button">Salva nel Wardrobe</button>
+  </div>
 </section>
 
 <section class="sheet" id="wardrobeItemSheet" aria-hidden="true">
@@ -2182,7 +2230,7 @@ body{background:var(--bg)}
     categoryGrid.innerHTML = filtered.map(cat => `
       <button class="category-card" data-category="${cat.id}">
         <div class="category-art"><img src="${cat.img}" alt="${escapeHtml(cat.name)}"></div>
-        <div class="category-meta"><div><strong>${escapeHtml(cat.name)}</strong><small>${cat.count} capi</small></div><span class="category-arrow">${rightArrow}</span></div>
+        <div class="category-meta"><div><strong>${escapeHtml(cat.name)}</strong><small>${cat.count + wardrobeItems.filter(item => item.userAdded && item.category === cat.id).length} capi</small></div><span class="category-arrow">${rightArrow}</span></div>
       </button>`).join('') + (q ? '' : `
       <button class="add-card" id="addItemCard">
         <span class="add-plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
@@ -2226,7 +2274,7 @@ body{background:var(--bg)}
     const all = wardrobeFilter === 'all';
     categoryGrid.hidden = !all;
     recentGrid.hidden = all;
-    $('#wardrobeTotalCount').textContent = all ? '135 capi' : '14 recenti';
+    $('#wardrobeTotalCount').textContent = all ? `${135 + wardrobeItems.filter(item => item.userAdded).length} capi` : `${14 + wardrobeItems.filter(item => item.userAdded).length} recenti`;
     wardrobeHint.textContent = all ? 'Tocca una categoria per aprire il tuo armadio.' : 'Gli ultimi capi aggiunti al tuo Wardrobe.';
     if (all) renderCategoryGrid(q); else renderRecent(q);
     $$('[data-wardrobe-filter]').forEach(btn => btn.classList.toggle('active', btn.dataset.wardrobeFilter === wardrobeFilter));
@@ -2238,7 +2286,7 @@ body{background:var(--bg)}
     if (!cat) return;
     activeCategory = id;
     $('#categoryTitle').textContent = cat.name;
-    $('#categoryCount').textContent = `${cat.count} capi`;
+    $('#categoryCount').textContent = `${cat.count + wardrobeItems.filter(item => item.userAdded && item.category === cat.id).length} capi`;
     categorySearchInput.value = '';
     categorySearchWrap.classList.remove('open');
     wardrobeMainView.classList.remove('active','view-back','view-forward');
@@ -2296,13 +2344,9 @@ body{background:var(--bg)}
   categorySearchInput.addEventListener('input', renderCategoryItems);
 
   $('#wardrobeMenuBtn').addEventListener('click', () => openSheet('wardrobeMenuSheet'));
-  $('#cameraChoice').addEventListener('click', () => $('#cameraInput').click());
-  $('#galleryChoice').addEventListener('click', () => $('#galleryInput').click());
-  $('#cameraInput').addEventListener('change', e => { if (e.target.files?.length) { closeSheets(); showToast('Foto pronta'); e.target.value=''; } });
-  $('#galleryInput').addEventListener('change', e => { if (e.target.files?.length) { closeSheets(); showToast('Foto scelta'); e.target.value=''; } });
   $('#tryOnBtn').addEventListener('click', () => { const id=$('#wardrobeItemSheet').dataset.item; const item=wardrobeItems.find(i=>i.id===id); closeSheets(); openScreen('dressing'); setTimeout(()=>window.__wardrobeDressing?.openCategory(item?.category || 'tops'),90); showToast('Aperto nella Dressing Room'); });
   $('#editItemBtn').addEventListener('click', () => showToast('Modifica capo'));
-  $('#deleteItemBtn').addEventListener('click', () => showToast('Tieni premuto per gestire il capo'));
+  $('#deleteItemBtn').addEventListener('click', () => { const id=$('#wardrobeItemSheet').dataset.item; const item=wardrobeItems.find(i=>i.id===id); if (item?.userAdded && window.WardRobeAddItem) window.WardRobeAddItem.deleteItem(id); else showToast('I capi demo restano nella baseline'); });
 
   // Le card della Home possono portare direttamente alla vista corretta.
   $$('[data-stat]').forEach(btn => {
@@ -2312,6 +2356,7 @@ body{background:var(--bg)}
   });
 
   renderCategoryGrid();
+  window.__wardrobeWardrobe = { syncWardrobeView, renderCategoryGrid, renderRecent, renderCategoryItems, openCategory, closeCategory, openItemSheet, getActiveCategory: () => activeCategory };
 
 
   updateGreeting();
@@ -2887,6 +2932,9 @@ body{background:var(--bg)}
 })();
 </script>
 
+
+<script src="/wardrobe-db.js"></script>
+<script src="/wardrobe-add-item.js"></script>
 
 <script>
 (() => {

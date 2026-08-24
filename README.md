@@ -1,24 +1,23 @@
-# WardRobe — PWA 0.9
+# WardRobe — 1.0 Add Item
 
-Questa milestone aggiunge la shell PWA alla Web Baseline 0.8 senza cambiare il layout prodotto.
+Baseline PWA 0.9 + primo ciclo dati reale.
 
-## Cosa aggiunge
-- manifest PWA con `display: standalone` e orientamento portrait;
-- icone Android + maskable + Apple touch icon;
-- service worker con app shell offline e HTML network-first;
-- install banner discreto quando WardRobe viene aperta dal browser;
-- flusso Android via `beforeinstallprompt` quando disponibile;
-- istruzioni iPhone `Condividi → Aggiungi alla schermata Home`;
-- rilevamento modalità standalone e auto-hide del banner.
+## Nuovo in 1.0
+- Add Item da fotocamera o galleria;
+- editor di crop 4:5 con trascinamento e zoom;
+- nome + categoria;
+- salvataggio della foto ritagliata come Blob in IndexedDB;
+- capi persistenti dopo chiusura/riapertura;
+- conteggi Wardrobe aggiornati senza alterare i dati demo baseline;
+- capi aggiunti visibili in categoria e Recenti;
+- eliminazione dei soli capi aggiunti dall'utente;
+- shell PWA aggiornata per mettere in cache anche i nuovi script.
 
 ## Deploy
-Carica **il contenuto di questa cartella** nella root del repository GitHub collegato a Vercel.
+Caricare tutto il contenuto di questa cartella nella root del repository collegato a Vercel.
 
-Dopo il deploy su HTTPS:
-1. apri WardRobe dal telefono;
-2. installala dalla Home;
-3. avviala dall'icona installata;
-4. verifica che si apra senza barra URL/controlli browser.
-
-## Nota
-La barra browser non può essere rimossa da una normale tab web. La modalità app senza browser chrome entra in funzione quando la PWA viene installata e lanciata dalla Home.
+## Scope intenzionalmente rinviato
+- background removal automatico;
+- fit avanzato sull'avatar;
+- modifica completa di un capo già salvato;
+- sync cloud/account.

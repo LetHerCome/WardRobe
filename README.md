@@ -1,23 +1,18 @@
-# WardRobe — 1.0 Add Item
+# WardRobe — 1.1 Visual Refresh
 
-Baseline PWA 0.9 + primo ciclo dati reale.
+Milestone visuale costruita sopra WardRobe 1.0 Add Item.
 
-## Nuovo in 1.0
-- Add Item da fotocamera o galleria;
-- editor di crop 4:5 con trascinamento e zoom;
-- nome + categoria;
-- salvataggio della foto ritagliata come Blob in IndexedDB;
-- capi persistenti dopo chiusura/riapertura;
-- conteggi Wardrobe aggiornati senza alterare i dati demo baseline;
-- capi aggiunti visibili in categoria e Recenti;
-- eliminazione dei soli capi aggiunti dall'utente;
-- shell PWA aggiornata per mettere in cache anche i nuovi script.
+## Scope
+- palette più luminosa e più fashion;
+- Home hero trasformata in studio editoriale luminoso;
+- eliminato il vecchio fondale room-console/rack;
+- Wardrobe più colorato ma ancora premium;
+- Dressing Room più luminosa e con accento blush;
+- Looks con superfici più ricche;
+- PWA e flussi 1.0 mantenuti.
 
-## Deploy
-Caricare tutto il contenuto di questa cartella nella root del repository collegato a Vercel.
-
-## Scope intenzionalmente rinviato
-- background removal automatico;
-- fit avanzato sull'avatar;
-- modifica completa di un capo già salvato;
-- sync cloud/account.
+## Non incluso
+- onboarding avatar personale;
+- nuovo crop/rotate;
+- riconoscimento categoria;
+- modifiche alla persistenza.

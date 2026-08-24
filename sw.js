@@ -1,10 +1,11 @@
-const CACHE_NAME = 'wardrobe-shell-v1.1';
+const CACHE_NAME = 'wardrobe-shell-v1.2';
 const APP_SHELL = [
   '/',
   '/index.html',
   '/manifest.webmanifest',
   '/wardrobe-db.js',
   '/wardrobe-add-item.js',
+  '/wardrobe-avatar.js',
   '/assets/avatar-base.png',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
